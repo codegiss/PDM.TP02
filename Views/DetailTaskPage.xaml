@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TarefasApp.Views.DetailTaskPage"
+             xmlns:viewModels="clr-namespace:TarefasApp.ViewModels">
+
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="CadetBlue"
+            Padding="30"
+            Spacing="10">
+
+            <HorizontalStackLayout HorizontalOptions="End"
+                Spacing="10">
+                <Button Text="Editar tarefa"
+                    HorizontalOptions="End"
+                    WidthRequest="70"
+                    Clicked="OnEditClicked"
+                    CommandParameter="{Binding TarefaSelecionada}"/>
+
+                <Button Text="Excluir tarefa"
+                    HorizontalOptions="End"
+                    WidthRequest="70"
+                    Command="{Binding DeleteCommand}"
+                    CommandParameter="{Binding TarefaSelecionada}"/>
+            </HorizontalStackLayout>
+
+            <Label x:Name="titulo"
+                   Text="{Binding TarefaSelecionada.Titulo}"
+                   FontSize="24"
+                   TextColor="White" />
+            <Label x:Name="descricao"
+                   Text="{Binding TarefaSelecionada.Descricao}"
+                   FontSize="18"
+                   TextColor="White" />
+            <Label x:Name="datacriacao"
+                   Text="{Binding TarefaSelecionada.DataCriacao, StringFormat='Data de criação: {0:dd/MM/yyyy}'}"
+                   FontSize="18"
+                   TextColor="White" />
+            <Label x:Name="prioridade" Text="{Binding TarefaSelecionada.Prioridade, StringFormat='Prioridade: {0}'}"
+                   FontSize="18"
+                   TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

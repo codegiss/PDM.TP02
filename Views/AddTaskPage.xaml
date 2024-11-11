@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TarefasApp.ViewModels"
+             x:Class="TarefasApp.Views.AddTaskPage"
+             Title="AddTaskPage">
+    
+    <ContentPage.BindingContext>
+        <local:AddTaskViewModel/>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout BackgroundColor="CadetBlue"
+    Padding="30"
+    Spacing="20">
+        <Label Text="Adicionar nova tarefa"
+            FontSize="24" />
+        <HorizontalStackLayout>
+            <Label Text="Título:"
+                FontSize="20"/>
+            <Entry x:Name="titulo"
+                FontSize="15"
+                Text="{Binding Titulo}" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Descrição:"
+               FontSize="20"/>
+            <Entry x:Name="descricao"
+                FontSize="15"
+                Text="{Binding Descricao}" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Picker Title="Prioridade"
+                    SelectedIndex="{Binding Prioridade}">
+                <Picker.Items>
+                    <x:String>Alta</x:String>
+                    <x:String>Média</x:String>
+                    <x:String>Baixa</x:String>
+                </Picker.Items>
+            </Picker>
+        </HorizontalStackLayout>
+
+        <Button Text="Adicionar"
+                Command="{Binding AddTaskCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>
